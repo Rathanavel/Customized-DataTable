@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CLV-DataTable", "CLV-DataTable\", "{75CA1BFF-C2D5-4EE5-B206-518D28E05EB2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54234"
+		Debug.AspNetCompiler.PhysicalPath = "CLV-DataTable\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54234\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54234"
+		Release.AspNetCompiler.PhysicalPath = "CLV-DataTable\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54234\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54234"
+		SlnRelativePath = "CLV-DataTable\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75CA1BFF-C2D5-4EE5-B206-518D28E05EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CA1BFF-C2D5-4EE5-B206-518D28E05EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21E12002-D0A8-4B35-A5E9-B7C3DC795903}
+	EndGlobalSection
+EndGlobal
