@@ -12,6 +12,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+
+            <asp:Literal ID="ctrlLiteral" runat="server"></asp:Literal>
+            <asp:Label ID="sdf" runat="server"></asp:Label>
+
             <input type="button" onclick="loadAll()" value="LoadAll" />
             <input type="button" onclick="BindAll()" value="Bind" />
             <table id="example" class="display" style="width: 100%">
@@ -40,7 +44,8 @@
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
                     //contentType: "application/json",
-                    url: "Default.aspx/Data",
+                    //url: "Default.aspx/Data",
+                    url:"CLVServices.asmx/Data",
                     data: function (d) {
                         console.log(d)
                         return JSON.stringify({ parameters: d });
