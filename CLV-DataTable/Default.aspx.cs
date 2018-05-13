@@ -25,36 +25,60 @@ public partial class _Default : System.Web.UI.Page
 
     public void GenerateTable(DataTable table)
     {
-        //DataTable table = new DataTable();
+        /*
+        DataTable table = new DataTable();
 
-        //table.Columns.Add("Link", typeof(string));
-        //table.Columns.Add("Img", typeof(string));
-        //table.Columns.Add("ID", typeof(int));
-        //table.Columns.Add("Name", typeof(string));
+        table.Columns.Add("Link", typeof(string));
+        table.Columns.Add("Img", typeof(string));
+        table.Columns.Add("ID", typeof(int));
+        table.Columns.Add("Name", typeof(string));
 
 
-        //table.Rows.Add(new HyperLinkColumn() { Target = "https://google.com", Text = "Google" }, 1, "Rathanavel");
-        //table.Rows.Add(new HyperLinkColumn() { Target = "https://google.com", Text = "Google" }, 2, "Aish");
-        //table.Rows.Add(new HyperLinkColumn() { Target = "https://google.com", Text = "Google" }, 3, "Navneet Rathanavel");
+        table.Rows.Add(new HyperLinkColumn() { Target = "https://google.com", Text = "Google" }, 1, "Rathanavel");
+        table.Rows.Add(new HyperLinkColumn() { Target = "https://google.com", Text = "Google" }, 2, "Aish");
+        table.Rows.Add(new HyperLinkColumn() { Target = "https://google.com", Text = "Google" }, 3, "Navneet Rathanavel");
 
-        //table.Rows.Add("<a href='#' target='_blank' onclick='alert(&#x27;hello&#x27;)'>Click Me</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 1, "Rathanavel");
-        //table.Rows.Add("<a href='https://google.com' target='_blank'>Some Link</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 2, "Aishwarya");
+        table.Rows.Add("<a href='#' target='_blank' onclick='alert(&#x27;hello&#x27;)'>Click Me</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 1, "Rathanavel");
+        table.Rows.Add("<a href='https://google.com' target='_blank'>Some Link</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 2, "Aishwarya");
 
-        /*ctrlLiteral.Text = ConvertDataTableToHTMLTableInOneLine(table);*/
+        ctrlLiteral.Text = ConvertDataTableToHTMLTableInOneLine(table);
+        */
 
         string renderScript = @"<script>$('#webpartid').DataTable({
+                                            paging    : true,
+                                            ordering  : true, // Global Sorting enable/disable
+                                            info      : false,
+                                            filter    : false,
+                                            length    : false,
                                             processing: true,
                                             serverSide: true,
+                                            pagingType: 'simple_numbers', // numbers | simple | simple_numbers | full | full_numbers | first_last_numbers - https://datatables.net/reference/option/pagingType
                                             ajax:
                                             {
                                                 type: 'POST',
                                                 contentType: 'application/json; charset=utf-8',
                                                 url: 'CLVServices.asmx/Data',
                                                 data: function(d) {
+                                                    d.webpartid = '5';
+                                                    d.pageurl = 'https://google.com';
                                                     console.log(d)
                                                     return JSON.stringify({ parameters: d });
                                                 }
-                                            }
+                                            },
+                                            //scrollY:'200px',
+                                            //scrollCollapse: true,
+                                            order: [],
+                                            columnDefs: [
+                                               { 'targets': 3, 'name':'jgg', 'title': 'IDD', 'orderable': true, 'searchable': false, 'width': 'auto', 'defaultContent': 'sdfsf', 'render': function (data, type, full, meta) {             
+                                                //console.log(data.length) 
+                                                if(data.length != 0){
+                                                                   return data;
+                                                                }else{
+                                                                   return '-';
+                                                                }
+                                                            } 
+                                                }
+                                              ]
                                         });</script>";
         ctrlLiteral.Text = ConvertDataTableToHTML(
             table,       // Actual DataTable

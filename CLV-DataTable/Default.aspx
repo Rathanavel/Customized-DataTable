@@ -35,18 +35,27 @@
         //});
 
         function loadAll() {
+            var da = new FormData();
+            da.append('id', 5);
+
             $('#example').DataTable({
+
+
                 //bSort: true,
                 //bFilter: true,
                 processing: true,
                 serverSide: true,
+                //data: JSON.stringify({ id: 5 }),
                 ajax: {
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
                     //contentType: "application/json",
                     //url: "Default.aspx/Data",
-                    url:"CLVServices.asmx/Data",
+                    url: "CLVServices.asmx/Data",
                     data: function (d) {
+                        d.webpartid = '5';
+                        d.pageurl = 'https://google.com';
+
                         console.log(d)
                         return JSON.stringify({ parameters: d });
                     }

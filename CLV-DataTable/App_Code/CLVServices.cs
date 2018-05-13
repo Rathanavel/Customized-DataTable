@@ -25,11 +25,12 @@ public class CLVServices : System.Web.Services.WebService
     [WebMethod]
     public void Data(object parameters)
     {
+        //Read paramater from datatable along with additional parms
+        var req = DataTableParameters.Get(parameters);
+
         QuerySP query = new QuerySP();
 
-        DataTable table = query.QueryData();
-
-        var req = DataTableParameters.Get(parameters);
+        DataTable table = query.QueryData();        
 
         DataView dv = table.DefaultView;
         //dv.Sort = "ID DESC";
@@ -39,15 +40,15 @@ public class CLVServices : System.Web.Services.WebService
                 dv.Sort = table.Columns[req.Order[col.Key].Column].ToString() + " " + req.Order[col.Key].Direction;
         }
 
-        table = dv.ToTable();     
+        table = dv.ToTable();
 
         var resultSet = new DataTableResultSet();
         resultSet.draw = req.Draw;
-        resultSet.recordsTotal = table.Rows.Count;    
-        resultSet.recordsFiltered = table.Rows.Count; 
+        resultSet.recordsTotal = table.Rows.Count;
+        resultSet.recordsFiltered = table.Rows.Count;
 
         foreach (DataRow recordFromDb in table.Select().Skip(req.Start).Take(req.Length))
-        {           
+        {
             //var columns = new List<string>(); // Working
 
             var columns = new List<string>();
@@ -64,14 +65,9 @@ public class CLVServices : System.Web.Services.WebService
             //columns.Add(recordFromDb[0].ToString());
             //columns.Add(recordFromDb[1].ToString());
 
-
-            //columns.Add("first column value");
-            //columns.Add("second column value");
-            //columns.Add("third column value");
-            /* you may add as many columns as you need. Each column is a string in the List<string> */
             resultSet.data.Add(columns);
         }
-        
+
         SendResponse(HttpContext.Current.Response, resultSet);
     }
 

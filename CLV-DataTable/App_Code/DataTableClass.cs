@@ -40,6 +40,10 @@ public class DataTableParameters
     public string SearchValue;
     public int Start;
 
+    // Additional Parameters
+    public string _WebPartID;
+    public string _PageUrl;
+
     private DataTableParameters()
     {
     }
@@ -72,7 +76,9 @@ public class DataTableParameters
                 new string(
                     ((string)input["search"]["value"]).Where(
                         c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || c == '-').ToArray()),
-            SearchRegex = (bool)input["search"]["regex"]
+            SearchRegex = (bool)input["search"]["regex"],
+            _WebPartID = (string)input["webpartid"],
+            _PageUrl = (string)input["pageurl"]
         };
     }
 }

@@ -27,7 +27,7 @@ public class QuerySP
         table.Columns.Add("Name", typeof(string));
 
         table.Rows.Add("<a href='#' target='_blank' onclick='console.log(this);alert(&#x27;hello&#x27;)'>Click Me</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 1, "Rathanavel");
-        table.Rows.Add("<a href='https://google.com' target='_blank'>Some Link</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 2, "Aish");
+        table.Rows.Add("<a href='https://google.com' target='_blank'>Some Link</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 2, "");
         table.Rows.Add("<a href='https://yahoo.com' target='_blank'>File.pdf</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 3, "Nivi");
 
         table.Rows.Add("<a href='#' target='_blank' onclick='alert(&#x27;hello&#x27;)'>Click Me</a>", "<img src='https://placeholdit.co//i/30x30?&bg=333&fc=fff&text=IMG'>", 4, "Rathanavel4");
@@ -46,4 +46,19 @@ public class QuerySP
         return table;
 
     }
+}
+
+public class CLVColumn
+{
+    public enum _SortOrder { ASC, DESC };
+
+    public int TargetID; // To store column index for DataTable.js in colDefs
+    public string InternalName;
+    public string DisplayName;
+    public string AllowSorting;
+    public bool Searchable = false;
+    public string Width;
+    public _SortOrder SortOrder = _SortOrder.ASC;
+
+    public List<CLVColumn> ColumnDefinition = new List<CLVColumn>();
 }
